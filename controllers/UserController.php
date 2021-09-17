@@ -6,6 +6,7 @@ use MVC\Router;
 use Model\Login;
 use Model\Users;
 use Intervention\Image\ImageManagerStatic as Imagex;
+use Model\Categories;
 
 class UserController
 {
@@ -22,36 +23,39 @@ class UserController
     public static function crear(Router $router)
     {
         $errores = [];
+        $categories = Categories::All();
+        // debuguear($categories);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // debuguear($_POST['user']);
 
-            if (!$_POST['user']['name_u']) {
+            if (!$_POST['user']['name']) {
                 array_push($errores, "El nombre es obligatorio");
             }
-            if (!$_POST['user']['username']) {
-                array_push($errores, "El usuario es obligatorio");
+            if (!$_POST['user']['email']) {
+                array_push($errores, "El email es obligatorio");
             }
             if (!$_POST['user']['password']) {
                 array_push($errores, "La contraseña es obligatorio");
             }
-            if (!$_POST['user']['profile']) {
+            if (!$_POST['user']['categoryId']) {
                 array_push($errores, "La categoria es obligatorio");
             }
             if (!$_FILES['user']['tmp_name']['photo']) {
                 array_push($errores, "La foto es obligatorio");
             }
             if (
-                preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name_u']) &&
-                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['username']) &&
+                preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name']) &&
+                preg_match('/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/', $_POST['user']['email']) &&
                 preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password'])
             ) {
 
                 //Buscar ususario y traer
-                $colum =  "username";
-                $valorColum = $_POST['user']["username"];
+                $colum =  "email";
+                $valorColum = $_POST['user']["email"];
                 $respuesta = Login::FindColumn($colum, $valorColum);
-                $nombre = isset($respuesta->username);
-                if (!$nombre) {
+                $verEmail = isset($respuesta->email);
+                if (!$verEmail) {
                     $password = $_POST['user']['password'];
                     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
                     $_POST['user']['password'] = $passwordHash;
@@ -61,19 +65,17 @@ class UserController
 
                     if ($_FILES['user']['tmp_name']['photo']) {
                         //modificar imagen
-                        $image = Imagex::make($_FILES['user']['tmp_name']['photo'])->fit(800, 600);
+                        $image = Imagex::make($_FILES['user']['tmp_name']['photo'])->fit(200, 200);
                         //agregar al array
                         $_POST['user']['photo'] = $nameImage;
                     }
-                    $_POST['user']['estado'] = 1;
-                    $_POST['user']['last_login'] = date('Y-m-d');
-                    $_POST['user']['registration_date'] = date('Y-m-d');
 
                     if (empty($errores)) {
                         if (!is_dir(CARPETA_IMAGENES)) {
                             mkdir(CARPETA_IMAGENES);
                         }
                         $user = $_POST['user'];
+                        // debuguear($user);
                         $respuesta = Users::Save($user);
 
                         $image->save(CARPETA_IMAGENES . $nameImage);
@@ -83,7 +85,7 @@ class UserController
                         }
                     }
                 } else {
-                    array_push($errores, "El usuario existe, asigne otro usuario");
+                    array_push($errores, "El email ya existe, asigne otro");
                 }
             } else {
                 array_push($errores, "Caracteres no admitidos, ingrese caracteres A-Z y/o 0-9");
@@ -92,12 +94,14 @@ class UserController
 
         $router->render('usuarios/crear', [
             'errores' => $errores,
+            'categories' => $categories,
         ]);
     }
 
     public static function actualizar(Router $router)
     {
         $errores = [];
+        $categories = Categories::All();
         $id = validarORedireccionar('/usuarios');
         $valorColum = $id;
         //busscar usuario y traer como objeto
@@ -105,21 +109,21 @@ class UserController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (!$_POST['user']['name_u']) {
+            if (!$_POST['user']['name']) {
                 array_push($errores, "El nombre es obligatorio");
             }
-            if (!$_POST['user']['username']) {
-                array_push($errores, "El usuario es obligatorio");
+            if (!$_POST['user']['email']) {
+                array_push($errores, "El email es obligatorio");
             }
             if (!$_POST['user']['password']) {
                 array_push($errores, "La contraseña es obligatorio");
             }
-            if (!$_POST['user']['profile']) {
+            if (!$_POST['user']['categoryId']) {
                 array_push($errores, "La categoria es obligatorio");
             }
             if (
-                preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name_u']) &&
-                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['username']) &&
+                preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name']) &&
+                preg_match('/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/', $_POST['user']['email']) &&
                 preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password'])
             ) {
                 $args = $_POST['user'];
@@ -133,7 +137,7 @@ class UserController
 
                 if ($_FILES['user']['tmp_name']['photo']) {
                     //modificar imagen
-                    $image = Imagex::make($_FILES['user']['tmp_name']['photo'])->fit(800, 600);
+                    $image = Imagex::make($_FILES['user']['tmp_name']['photo'])->fit(200, 200);
                     //crea un nombre aleatorio
                     $nameImage = md5(uniqid(rand(), true)) . '.jpg';
 
@@ -161,6 +165,7 @@ class UserController
         $router->render('usuarios/actualizar', [
             'user' => $user,
             'errores' => $errores,
+            'categories' => $categories,
         ]);
     }
 

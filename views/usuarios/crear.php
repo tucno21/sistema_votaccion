@@ -38,7 +38,7 @@
                             <div class="input-group-prepend">
                                 <spam class="input-group-text"><i class="fa fa-user"></i></spam>
                             </div>
-                            <input type="text" class="form-control input-lg" name="user[name_u]" placeholder="Ingresar Nombre" required>
+                            <input type="text" class="form-control input-lg" name="user[name]" placeholder="Ingresar Nombre" required>
                         </div>
                     </div>
                     <!-- USUARIO -->
@@ -47,7 +47,7 @@
                             <div class="input-group-prepend">
                                 <spam class="input-group-text"><i class="fas fa-users-cog"></i></i></spam>
                             </div>
-                            <input type="text" class="form-control input-lg" name="user[username]" placeholder="Ingresar Usuario" required>
+                            <input type="email" class="form-control input-lg" name="user[email]" placeholder="Ingresar correo" required>
                         </div>
                     </div>
                     <!-- contraseña -->
@@ -65,11 +65,11 @@
                             <div class="input-group-prepend">
                                 <spam class="input-group-text"><i class="fas fa-address-card"></i></spam>
                             </div>
-                            <select class="form-control input-lg" name="user[profile]">
+                            <select class="form-control input-lg" name="user[categoryId]">
                                 <option value="">Seleccione Perfil</option>
-                                <option value="Administrador">Administrador</option>
-                                <option value="Especial">Especial</option>
-                                <option value="Vendedor">Vendedor</option>
+                                <?php foreach ($categories as $cat) : ?>
+                                    <option value="<?php echo $cat->id; ?>"><?php echo $cat->category; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -93,6 +93,7 @@
                     </div>
 
                 </div>
+                <input type="hidden" name="user[estado]" value="1">
                 <div class="text-right card-footer">
                     <button type="submit" class="btn btn-primary btn-lg">Agregar</button>
                 </div>
