@@ -20,7 +20,7 @@
                 <div class="text">
                     <span class="text-1">Elecciones Municipales <br> Escolares 2022</span>
                     <span class="text-2">Tu voto cuenta</span>
-                    <span class="text-2"></span>
+                    <span class="text-2"><?php echo $loco; ?></span>
                 </div>
             </div>
             <div class="back">

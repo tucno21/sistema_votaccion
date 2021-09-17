@@ -23,7 +23,9 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 
     //script
     include 'adminLte/AdminScript.php';
-} else {
+} else if (isset($_SESSION["tuvoto"]) && $_SESSION["tuvoto"] == "ok") {
     //login
-    include 'login/entrar.php';
+    include 'voto/index.php';
+} else {
+    include 'login/index.php';
 }

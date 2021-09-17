@@ -7,7 +7,7 @@ $title = 'AdminLTE <b>3</b>';
 $titleBar = 'AdminLTE 3';
 $titlelogin = '<b>Admin</b>LTE';
 $logo = '../adminLte/dist/img/AdminLTELogo.png';
-$mainLink = '/';
+$mainLink = '/dashboard';
 
 
 //DATOS DEL USUARIO ADMIN

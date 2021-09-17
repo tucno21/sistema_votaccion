@@ -4,14 +4,32 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Login;
-use Model\Users;
+use Model\Student;
 
 class LoginController
 {
     public static function login(Router $router)
     {
         $errores = [];
+        $loco = 'loco';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            if ($_POST["dni"] !== '') {
+                // if (
+                //     preg_match('/^[0-9]+$/', $_POST["dni"])
+                // ) {
+                //     $colum =  "dni";
+                //     $valorColum = $_POST["dni"];
+                //     $respuesta = Student::FindColumn($colum, $valorColum);
+                //     if (!$respuesta) {
+                //         header('Location: /tuvoto');
+                //     }
+                // }
+                session_start();
+                $_SESSION["tuvoto"] = "ok";
+
+                header('Location: /tuvoto');
+            }
             // debuguear($_POST);
             if ($_POST["email"] !== '' && $_POST["password"] !== '') {
                 if (
@@ -42,7 +60,7 @@ class LoginController
                                 // $id = $respuesta->id;
                                 // $envio = Users::update($args, $id);
                                 // debuguear($envio);
-                                header('Location: /');
+                                header('Location: /dashboard');
                             } else {
                                 $errores = ['El usuario esta desactivado'];
                             }
@@ -61,8 +79,9 @@ class LoginController
         }
         // debuguear($errores);
 
-        $router->render('login/entrar', [
+        $router->render('login/index', [
             'errores' => $errores,
+            'loco' => $loco,
         ]);
     }
 
