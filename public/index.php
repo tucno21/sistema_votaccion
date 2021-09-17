@@ -5,6 +5,7 @@ require_once __DIR__ . '/../include/app.php';
 use MVC\Router;
 use Controllers\VotoController;
 use Controllers\LoginController;
+use Controllers\CategoryController;
 use Controllers\DashboardController;
 //llamando al controller
 
@@ -19,6 +20,13 @@ $router->get('/logout', [LoginController::class, "logout"]);
 $router->get('/dashboard', [DashboardController::class, "index"]);
 //VOTO
 $router->get('/tuvoto', [VotoController::class, "index"]);
+// //CRUD CATEGORIAS
+$router->get('/categorias', [CategoryController::class, "index"]);
+$router->get('/categorias/crear', [CategoryController::class, "crear"]);
+$router->post('/categorias/crear', [CategoryController::class, "crear"]);
+$router->get('/categorias/actualizar', [CategoryController::class, "actualizar"]);
+$router->post('/categorias/actualizar', [CategoryController::class, "actualizar"]);
+$router->get('/categorias/eliminar', [CategoryController::class, "eliminar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();

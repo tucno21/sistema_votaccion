@@ -25,7 +25,7 @@
 <script src="<?php echo $linkURL; ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo $linkURL; ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo $linkURL; ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<script src="../js/datatable.js"></script>
 </body>
 
 </html>
