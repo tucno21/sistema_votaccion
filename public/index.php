@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../include/app.php';
 
 use MVC\Router;
+use Controllers\UserController;
 use Controllers\VotoController;
 use Controllers\LoginController;
 use Controllers\CategoryController;
@@ -27,6 +28,13 @@ $router->post('/categorias/crear', [CategoryController::class, "crear"]);
 $router->get('/categorias/actualizar', [CategoryController::class, "actualizar"]);
 $router->post('/categorias/actualizar', [CategoryController::class, "actualizar"]);
 $router->get('/categorias/eliminar', [CategoryController::class, "eliminar"]);
+// //CRUD USUARIOS
+$router->get('/usuarios', [UserController::class, "index"]);
+$router->get('/usuarios/crear', [UserController::class, "crear"]);
+$router->post('/usuarios/crear', [UserController::class, "crear"]);
+$router->get('/usuarios/actualizar', [UserController::class, "actualizar"]);
+$router->post('/usuarios/actualizar', [UserController::class, "actualizar"]);
+$router->get('/usuarios/eliminar', [UserController::class, "eliminar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();
