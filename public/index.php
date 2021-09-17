@@ -8,6 +8,7 @@ use Controllers\UserController;
 use Controllers\VotoController;
 use Controllers\LoginController;
 use Controllers\TurnoController;
+use Controllers\StudentController;
 use Controllers\CategoryController;
 use Controllers\DashboardController;
 //llamando al controller
@@ -51,6 +52,13 @@ $router->post('/turno/crear', [TurnoController::class, "crear"]);
 $router->get('/turno/actualizar', [TurnoController::class, "actualizar"]);
 $router->post('/turno/actualizar', [TurnoController::class, "actualizar"]);
 $router->get('/turno/eliminar', [TurnoController::class, "eliminar"]);
+// //CRUD ESTUDIANTES
+$router->get('/estudiantes', [StudentController::class, "index"]);
+$router->get('/estudiantes/crear', [StudentController::class, "crear"]);
+$router->post('/estudiantes/crear', [StudentController::class, "crear"]);
+$router->get('/estudiantes/actualizar', [StudentController::class, "actualizar"]);
+$router->post('/estudiantes/actualizar', [StudentController::class, "actualizar"]);
+$router->get('/estudiantes/eliminar', [StudentController::class, "eliminar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();

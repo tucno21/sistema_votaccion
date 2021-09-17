@@ -26,7 +26,7 @@ function validarORedireccionar(string $url)
 //validar tipo de contenido 
 function validarTipoContenido($tipo)
 {
-    $tipos = ['categoria', 'user', 'aula', 'turno'];
+    $tipos = ['categoria', 'user', 'aula', 'turno', 'estudiante'];
 
     return in_array($tipo, $tipos);
 }
