@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../include/app.php';
 
 use MVC\Router;
+use Controllers\AulaController;
 use Controllers\UserController;
 use Controllers\VotoController;
 use Controllers\LoginController;
@@ -35,6 +36,13 @@ $router->post('/usuarios/crear', [UserController::class, "crear"]);
 $router->get('/usuarios/actualizar', [UserController::class, "actualizar"]);
 $router->post('/usuarios/actualizar', [UserController::class, "actualizar"]);
 $router->get('/usuarios/eliminar', [UserController::class, "eliminar"]);
+// //CRUD AULAS
+$router->get('/aulas', [AulaController::class, "index"]);
+$router->get('/aulas/crear', [AulaController::class, "crear"]);
+$router->post('/aulas/crear', [AulaController::class, "crear"]);
+$router->get('/aulas/actualizar', [AulaController::class, "actualizar"]);
+$router->post('/aulas/actualizar', [AulaController::class, "actualizar"]);
+$router->get('/aulas/eliminar', [AulaController::class, "eliminar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();
