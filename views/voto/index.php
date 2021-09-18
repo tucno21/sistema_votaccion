@@ -9,6 +9,12 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../adminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <script src="../adminLte/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="../adminLte/plugins/jquery/jquery.min.js"></script>
     <!-- Favicons -->
     <meta name="theme-color" content="#7952b3">
 
@@ -58,16 +64,27 @@
         <section class="container py-3 text-center">
             <div class="row py-lg-3">
                 <div class="mx-auto col-lg-6 col-md-8">
-                    <h1 class="fw-light">Bienvenido: carlos</h1>
+                    <h1 class="fw-light">Bienvenido: <?php echo $_SESSION['name']; ?></h1>
                     <p class="lead text-muted">Elige al alcalde escolar para el siguiente año, tu voto vale mucho y vota a conciencia</p>
 
                 </div>
             </div>
+            <?php
+            if (isset($errores)) {
+                foreach ($errores as $error) :
+            ?>
+                    <div class="alert alert-danger">
+                        <?php echo $error; ?>
+                    </div>
+            <?php
+                endforeach;
+            }
+            ?>
         </section>
 
         <div class="py-5 album bg-light">
             <div class="container">
-                <form method="POST" action="/tuvoto/listo">
+                <form method="POST">
 
                     <?php foreach ($candidatos as $cand) : ?>
                         <div class="row">
@@ -88,6 +105,8 @@
                         </div>
                     <?php endforeach; ?>
 
+                    <input type="hidden" name="eligio[id]" value="<?php echo $_SESSION['id']; ?>">
+
                     <div class="mt-5 d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary color-bot" style="width: 18rem;">Votar</button>
                     </div>
@@ -103,6 +122,7 @@
             <p class="mb-1">Desarrollador web: Carlos tucno Vasquez</p>
         </div>
     </footer>
+    <script src="../js/alertavoto.js"></script>
 </body>
 
 </html>

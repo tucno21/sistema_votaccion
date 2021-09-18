@@ -44,10 +44,13 @@ class LoginController
                                 if ($horahoy >= $respuesta2->hora_inicio && $horahoy <= $respuesta2->hora_fin) {
                                     $fh = date("Y-m-d H:i:s");
                                     $args['last_access'] = $fh;
-                                    $respuesta = Student::update($args, $respuesta->id);
+                                    Student::update($args, $respuesta->id);
 
                                     session_start();
                                     $_SESSION["tuvoto"] = "ok";
+                                    $_SESSION['id'] = $respuesta->id;
+                                    $_SESSION['name'] = $respuesta->name;
+
                                     header('Location: /tuvoto');
                                 } else {
                                     $errores = ['La votacion de: ' . $respuesta2->hora_inicio . ' a ' . $respuesta2->hora_fin];
