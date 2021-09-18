@@ -15,24 +15,24 @@
         .container .cover::after,
         .forms .form-content .title:before,
         .forms .form-content .button input {
-            background: #1E8449;
+            background: <?php echo $diseño->color_b; ?>;
         }
 
         .form-content .input-box input:focus,
         .form-content .input-box input:valid {
-            border-color: #1E8449;
+            border-color: <?php echo $diseño->color_b; ?>;
         }
 
         .form-content .input-box i {
-            color: #1E8449;
+            color: <?php echo $diseño->color_b; ?>;
         }
 
         .forms .form-content .button input:hover {
-            background: #52BE80;
+            background: <?php echo $diseño->color_s; ?>;
         }
 
         .forms .form-content label {
-            color: #52BE80;
+            color: <?php echo $diseño->color_s; ?>;
         }
     </style>
 </head>
@@ -42,15 +42,15 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <img src="../login/images/frontImg.jpg" alt="">
+                <img src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
                 <div class="text">
-                    <span class="text-1">Elecciones Municipales <br> Escolares 2022</span>
+                    <span class="text-1">Elecciones Municipales <br> Escolares <?php echo $diseño->fecha; ?></span>
                     <span class="text-2">Tu voto cuenta</span>
-                    <span class="text-2"><?php echo $loco; ?></span>
+                    <span class="text-2"></span>
                 </div>
             </div>
             <div class="back">
-                <img class="backImg" src="../login/images/backImg.jpg" alt="">
+                <img class="backImg" src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
                 <div class="text">
                     <span class="text-1">Solo personal Autorizado</span>
                     <span class="text-2">Panel administrativo</span>
