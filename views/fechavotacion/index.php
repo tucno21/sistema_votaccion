@@ -21,16 +21,20 @@
                 <table class="table table-bordered table-striped dtr-inline dt-responsive">
                     <thead>
                         <tr>
-                            <th>fecha y hora de Inicio</th>
-                            <th>fecha y hora de final</th>
+                            <th>fecha electoral</th>
+                            <th>hora de inicio</th>
+                            <th>fecha y de termino</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>2021/15/12 15:15:00</td>
-                            <td>2021/15/12 15:15:00</td>
-                        </tr>
+                        <?php foreach ($fechahora as $fh) : ?>
+                            <tr>
+                                <td><?php echo $fh->fecha; ?></td>
+                                <td><?php echo $fh->hora_inicio; ?></td>
+                                <td><?php echo $fh->hora_fin; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
