@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="<?php echo $linkURL; ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- daterange picker -->
     <link rel="stylesheet" href="<?php echo $linkURL; ?>plugins/daterangepicker/daterangepicker.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="<?php echo $linkURL; ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- jQuery -->
     <script src="<?php echo $linkURL; ?>plugins/jquery/jquery.min.js"></script>
     <!-- ChartJS -->

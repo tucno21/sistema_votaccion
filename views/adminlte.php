@@ -80,6 +80,12 @@ $linksSidebar = [
         'url'  => '/candidatos',
         'icon' => 'far fa-address-card',
     ],
+    [
+        'mode' => 'menu',
+        'text' => 'Fecha Electoral',
+        'url'  => '/fechaVotacion',
+        'icon' => 'far fa-calendar-alt',
+    ],
     ['header' => 'DISEÑO'],
     [
         'mode' => 'menu',

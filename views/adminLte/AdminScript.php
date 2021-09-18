@@ -13,6 +13,10 @@
 <script src="../js/visorfoto.js"></script>
 <!-- date-range-picker -->
 <script src="<?php echo $linkURL; ?>plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?php echo $linkURL; ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="../js/fecha.js"></script>
+
 <!-- ChartJS -->
 <!-- <script src="<?php echo $linkURL; ?>plugins/chart.js/Chart.min.js"></script> -->
 <!-- DataTables  & Plugins -->
@@ -26,6 +30,7 @@
 <script src="<?php echo $linkURL; ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo $linkURL; ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="../js/datatable.js"></script>
+
 </body>
 
 </html>

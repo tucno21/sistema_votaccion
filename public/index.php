@@ -12,6 +12,7 @@ use Controllers\StudentController;
 use Controllers\CategoryController;
 use Controllers\CandidatoController;
 use Controllers\DashboardController;
+use Controllers\FechaVotacionController;
 //llamando al controller
 
 
@@ -68,6 +69,11 @@ $router->post('/candidatos/crear', [CandidatoController::class, "crear"]);
 $router->get('/candidatos/actualizar', [CandidatoController::class, "actualizar"]);
 $router->post('/candidatos/actualizar', [CandidatoController::class, "actualizar"]);
 $router->get('/candidatos/eliminar', [CandidatoController::class, "eliminar"]);
+
+// //CRUD CANDIDATOS
+$router->get('/fechaVotacion', [FechaVotacionController::class, "index"]);
+$router->get('/fechaVotacion/actualizar', [FechaVotacionController::class, "actualizar"]);
+$router->post('/fechaVotacion/actualizar', [FechaVotacionController::class, "actualizar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();
