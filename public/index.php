@@ -10,6 +10,7 @@ use Controllers\LoginController;
 use Controllers\TurnoController;
 use Controllers\StudentController;
 use Controllers\CategoryController;
+use Controllers\CandidatoController;
 use Controllers\DashboardController;
 //llamando al controller
 
@@ -59,6 +60,14 @@ $router->post('/estudiantes/crear', [StudentController::class, "crear"]);
 $router->get('/estudiantes/actualizar', [StudentController::class, "actualizar"]);
 $router->post('/estudiantes/actualizar', [StudentController::class, "actualizar"]);
 $router->get('/estudiantes/eliminar', [StudentController::class, "eliminar"]);
+
+// //CRUD CANDIDATOS
+$router->get('/candidatos', [CandidatoController::class, "index"]);
+$router->get('/candidatos/crear', [CandidatoController::class, "crear"]);
+$router->post('/candidatos/crear', [CandidatoController::class, "crear"]);
+$router->get('/candidatos/actualizar', [CandidatoController::class, "actualizar"]);
+$router->post('/candidatos/actualizar', [CandidatoController::class, "actualizar"]);
+$router->get('/candidatos/eliminar', [CandidatoController::class, "eliminar"]);
 
 //lamando el metodo de ruter
 $router->comprobarRutas();
