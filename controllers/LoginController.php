@@ -42,16 +42,22 @@ class LoginController
                             if ($respuesta2->fecha == $fechaHoy) {
 
                                 if ($horahoy >= $respuesta2->hora_inicio && $horahoy <= $respuesta2->hora_fin) {
-                                    $fh = date("Y-m-d H:i:s");
-                                    $args['last_access'] = $fh;
-                                    Student::update($args, $respuesta->id);
 
-                                    session_start();
-                                    $_SESSION["tuvoto"] = "ok";
-                                    $_SESSION['id'] = $respuesta->id;
-                                    $_SESSION['name'] = $respuesta->name;
+                                    if ($respuesta->voto == null || $respuesta->voto == '' || $respuesta->voto == 0) {
 
-                                    header('Location: /tuvoto');
+                                        $fh = date("Y-m-d H:i:s");
+                                        $args['last_access'] = $fh;
+                                        Student::update($args, $respuesta->id);
+
+                                        session_start();
+                                        $_SESSION["tuvoto"] = "ok";
+                                        $_SESSION['id'] = $respuesta->id;
+                                        $_SESSION['name'] = $respuesta->name;
+
+                                        header('Location: /tuvoto');
+                                    } else {
+                                        $errores = ['Usted ya voto no puede entrar'];
+                                    }
                                 } else {
                                     $errores = ['La votacion de: ' . $respuesta2->hora_inicio . ' a ' . $respuesta2->hora_fin];
                                 }
