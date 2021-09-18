@@ -34,11 +34,17 @@
         .forms .form-content label {
             color: <?php echo $diseño->color_s; ?>;
         }
+
+        .errorDatos {
+            color: red;
+            margin-left: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
@@ -65,7 +71,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="far fa-address-card"></i>
-                                <input type="number" name="dni" placeholder="DNI" required>
+                                <input type="number" name="dni" placeholder="DNI">
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Entrar">
@@ -93,8 +99,21 @@
                         </div>
                     </form>
                 </div>
+
             </div>
+
         </div>
+        <?php
+        if (isset($errores)) {
+            foreach ($errores as $error) :
+        ?>
+                <div class="errorDatos">
+                    ERROR : <?php echo $error; ?>
+                </div>
+        <?php
+            endforeach;
+        }
+        ?>
     </div>
 </body>
 
