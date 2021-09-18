@@ -27,6 +27,7 @@ $router->get('/logout', [LoginController::class, "logout"]);
 $router->get('/dashboard', [DashboardController::class, "index"]);
 //VOTO
 $router->get('/tuvoto', [VotoController::class, "index"]);
+$router->post('/tuvoto/listo', [VotoController::class, "actualizar"]);
 // //CRUD CATEGORIAS
 $router->get('/categorias', [CategoryController::class, "index"]);
 $router->get('/categorias/crear', [CategoryController::class, "crear"]);
