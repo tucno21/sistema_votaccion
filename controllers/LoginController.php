@@ -5,7 +5,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Login;
 use Model\Diseno;
-use Model\Student;
+use Model\Students;
 use Model\FechaVotacion;
 
 class LoginController
