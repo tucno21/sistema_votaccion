@@ -28,7 +28,7 @@ class LoginController
 
                         $colum =  "dni";
                         $valorColum = $_POST["dni"];
-                        $respuesta = Student::FindColumn($colum, $valorColum);
+                        $respuesta = Students::FindColumn($colum, $valorColum);
 
                         $fecha =  1;
                         $respuesta2 = FechaVotacion::find($fecha);
@@ -47,7 +47,7 @@ class LoginController
 
                                         $fh = date("Y-m-d H:i:s");
                                         $args['last_access'] = $fh;
-                                        Student::update($args, $respuesta->id);
+                                        Students::update($args, $respuesta->id);
 
                                         session_start();
                                         $_SESSION["tuvoto"] = "ok";
