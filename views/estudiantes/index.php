@@ -44,7 +44,17 @@
                                 <td><?php echo $estudiante->dni; ?></td>
                                 <td><?php echo $estudiante->gradosec; ?></td>
                                 <td><?php echo $estudiante->turno; ?></td>
-                                <td><?php echo $estudiante->voto; ?></td>
+
+                                <?php if ($estudiante->voto > 0) { ?>
+                                    <td>
+                                        <p class="btn btn-primary pb-0 pt-0">si</p>
+                                    </td>
+                                <?php } else { ?>
+                                    <td>
+                                        <p class="btn btn-danger pb-0 pt-0">no</p>
+                                    </td>
+                                <?php }; ?>
+
                                 <td><?php echo $estudiante->last_access; ?></td>
                                 <td>
                                     <div class="btn-group">
