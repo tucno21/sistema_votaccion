@@ -173,4 +173,31 @@ class Template
             return "error";
         }
     }
+
+    public static function mysqlOne($colum)
+    {
+        $query = $colum;
+
+        $stmt = self::$db->query($query);
+        return $stmt->fetch_object();
+
+        $stmt->close();
+        $stmt->null;
+    }
+
+    public static function mysqlAll($colum)
+    {
+        $query = $colum;
+
+        $stmt = self::$db->query($query);
+        $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+        $mi_objeto = json_decode(json_encode($resultadato));
+        return $mi_objeto;
+
+        if ($stmt) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
 }

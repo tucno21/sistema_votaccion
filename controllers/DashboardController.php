@@ -45,40 +45,43 @@ class DashboardController
 
     public static function excel(Router $router)
     {
-        $estudiantes = Students::All();
 
-        // debuguear($estudiantes);
+        // $query = "SELECT C.name, C.group_name, COUNT(E.voto) maximo 
+        // FROM students E 
+        // INNER JOIN candidatos C ON E.voto = C.id 
+        // GROUP BY voto 
+        // ORDER BY maximo DESC";
+
+        $query = "SELECT C.name, C.group_name, COUNT(E.voto) maximo 
+        FROM candidatos C 
+        INNER JOIN students E ON C.id = E.voto 
+        GROUP BY voto 
+        ORDER BY maximo DESC";
+
+        $resultados = Candidatos::mysqlAll($query);
+
 
         $excel = new Spreadsheet();
         $hojaActiva = $excel->getActiveSheet();
         $hojaActiva->setTitle('resultados');
         $hojaActiva->getTabColor()->setRGB('FF0000');
 
-        $hojaActiva->getColumnDimension('A')->setWidth(7);
-        $hojaActiva->setCellValue('A1', 'ID');
+        $hojaActiva->getColumnDimension('A')->setWidth(5);
+        $hojaActiva->setCellValue('A1', 'N');
         $hojaActiva->getColumnDimension('B')->setWidth(30);
-        $hojaActiva->setCellValue('B1', 'NOMBRE');
-        $hojaActiva->getColumnDimension('C')->setWidth(15);
-        $hojaActiva->setCellValue('C1', 'DNI');
-        $hojaActiva->getColumnDimension('D')->setWidth(5);
-        $hojaActiva->setCellValue('D1', 'AULA');
-        $hojaActiva->getColumnDimension('E')->setWidth(12);
-        $hojaActiva->setCellValue('E1', 'TURNO');
-        $hojaActiva->getColumnDimension('F')->setWidth(7);
-        $hojaActiva->setCellValue('F1', 'VOTO');
-        $hojaActiva->getColumnDimension('G')->setWidth(20);
-        $hojaActiva->setCellValue('G1', 'FECHA');
+        $hojaActiva->setCellValue('B1', 'NOMBRE GRUPO');
+        $hojaActiva->getColumnDimension('C')->setWidth(30);
+        $hojaActiva->setCellValue('C1', 'NOMBRE CANDIDATO');
+        $hojaActiva->getColumnDimension('D')->setWidth(8);
+        $hojaActiva->setCellValue('D1', 'VOTOS TOTAL');
+
 
         $fila = 2;
-
-        foreach ($estudiantes as $value) {
-            $hojaActiva->setCellValue('A' . $fila, $value->id);
-            $hojaActiva->setCellValue('B' . $fila, $value->name);
-            $hojaActiva->setCellValue('C' . $fila, $value->dni);
-            $hojaActiva->setCellValue('D' . $fila, $value->aulaId);
-            $hojaActiva->setCellValue('E' . $fila, $value->turnoId);
-            $hojaActiva->setCellValue('F' . $fila, $value->voto);
-            $hojaActiva->setCellValue('G' . $fila, $value->last_access);
+        foreach ($resultados as $value) {
+            $hojaActiva->setCellValue('A' . $fila, $fila - 1);
+            $hojaActiva->setCellValue('B' . $fila, $value->group_name);
+            $hojaActiva->setCellValue('C' . $fila, $value->name);
+            $hojaActiva->setCellValue('D' . $fila, $value->maximo);
             $fila++;
         }
 
