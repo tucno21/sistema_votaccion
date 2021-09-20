@@ -9,7 +9,8 @@
     ],
     "require": {
         "intervention/image": "^2.6",
-        "tecnickcom/tcpdf": "^6.4"
+        "tecnickcom/tcpdf": "^6.4",
+        "phpoffice/phpspreadsheet": "^1.18"
     },
     "autoload": {
         "psr-4": {
