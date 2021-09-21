@@ -4,12 +4,17 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Login;
+use Model\Diseno;
 
 class LoginController
 {
     public static function login(Router $router)
     {
         $errores = [];
+
+        $id = 1;
+        $valorColum = $id;
+        $diseño = Diseno::find($valorColum);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -70,6 +75,7 @@ class LoginController
 
         $router->render('login/index', [
             'errores' => $errores,
+            'diseño' => $diseño,
         ]);
     }
 
