@@ -86,7 +86,45 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                 <!-- ./col -->
             </div>
 
+            <div class="card">
+                <div class="card-header">
+                    <a href="/dashboard/excel" class="btn btn-success">Descargar resultados en Excel</a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-12">
+                            <?php
+                            include 'graficos/resultadosBarras.php';
+                            ?>
+                        </div>
+                        <div class="col-lg-4 col-12">
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3><?php echo round($ganador->maximo / count($votos) * 100, 2); ?>%</h3>
+                                    <h5>Cant votos : <?php echo $ganador->maximo; ?></h5>
 
+                                    <p>Ganador: <?php echo $ganador->name; ?></p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+        </section>
+        <!-- /.content -->
         </section>
     </div>
 
