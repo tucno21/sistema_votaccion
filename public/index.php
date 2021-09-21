@@ -5,6 +5,7 @@ require_once __DIR__ . '/../include/app.php';
 use MVC\Router;
 use Controllers\UserController;
 use Controllers\LoginController;
+use Controllers\DisenoController;
 use Controllers\StudentController;
 use Controllers\CandidatoController;
 use Controllers\DashboardController;
@@ -48,6 +49,11 @@ $router->get('/candidatos/eliminar', [CandidatoController::class, "eliminar"]);
 $router->get('/fechaVotacion', [FechaVotacionController::class, "index"]);
 $router->get('/fechaVotacion/actualizar', [FechaVotacionController::class, "actualizar"]);
 $router->post('/fechaVotacion/actualizar', [FechaVotacionController::class, "actualizar"]);
+
+// //CRUD DISEÑO LOGIN
+$router->get('/diseño', [DisenoController::class, "index"]);
+$router->get('/diseño/actualizar', [DisenoController::class, "actualizar"]);
+$router->post('/diseño/actualizar', [DisenoController::class, "actualizar"]);
 
 
 //lamando el metodo de ruter
