@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../include/app.php';
 
 use MVC\Router;
-use Controllers\IndexController;
+use Controllers\UserController;
 use Controllers\LoginController;
 use Controllers\DashboardController;
 
@@ -17,6 +17,13 @@ $router->get('/logout', [LoginController::class, "logout"]);
 //DASHBOARD
 $router->get('/dashboard', [DashboardController::class, "index"]);
 
+// //CRUD USUARIOS
+$router->get('/usuarios', [UserController::class, "index"]);
+$router->get('/usuarios/crear', [UserController::class, "crear"]);
+$router->post('/usuarios/crear', [UserController::class, "crear"]);
+$router->get('/usuarios/actualizar', [UserController::class, "actualizar"]);
+$router->post('/usuarios/actualizar', [UserController::class, "actualizar"]);
+$router->get('/usuarios/eliminar', [UserController::class, "eliminar"]);
 
 
 
