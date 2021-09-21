@@ -144,7 +144,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                     </div>
 
                     <div class="text-right card-footer">
-                        <button type="submit" class="btn btn-primary btn-lg">Agregar</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Guardar cambios</button>
                     </div>
                 </form>
             </div>

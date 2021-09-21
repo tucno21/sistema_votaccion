@@ -131,22 +131,23 @@ class CandidatoController
                         }
                     }
 
-                    $candidato = $_POST['candidato'];
+                    $candidatoEnv = $_POST['candidato'];
+                    // debuguear(isset($candidato["photo"]));
 
-                    if (isset($candidato["photo"])) {
+                    if (isset($candidatoEnv["photo"])) {
                         $existeAchivo = file_exists(CARPETA_IMAGENES . $candidato->photo);
                         if ($existeAchivo) {
                             unlink(CARPETA_IMAGENES . $candidato->photo);
                         }
                     }
-                    if (isset($candidato["logo"])) {
+                    if (isset($candidatoEnv["logo"])) {
                         $existeAchivo2 = file_exists(CARPETA_IMAGENES . $candidato->logo);
                         if ($existeAchivo2) {
                             unlink(CARPETA_IMAGENES . $candidato->logo);
                         }
                     }
 
-                    $respuesta = Candidatos::update($candidato, $id);
+                    $respuesta = Candidatos::update($candidatoEnv, $id);
 
                     if ($respuesta == "ok") {
                         header('Location: /candidatos');
