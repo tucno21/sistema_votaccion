@@ -84,14 +84,14 @@ $linksCss = [
     $linkURL . 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css',
     $linkURL . 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css',
     $linkURL . 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
+    $linkURL . 'plugins/daterangepicker/daterangepicker.css',
+    $linkURL . 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
 ];
 
 // $linksCss = [
-//     
 
 //     $linkURL . 'plugins/icheck-bootstrap/icheck-bootstrap.min.css',
-//     $linkURL . 'plugins/daterangepicker/daterangepicker.css',
-//     $linkURL . 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+
 // ];
 
 $linksScript = [
@@ -108,20 +108,19 @@ $linksScript = [
     $linkURL . 'plugins/datatables-buttons/js/buttons.print.min.js',
     $linkURL . 'plugins/datatables-buttons/js/buttons.colVis.min.js',
     $linkURL . 'plugins/sweetalert2/sweetalert2.min.js',
+    $linkURL . 'plugins/moment/moment.min.js',
+    // $linkURL . 'pplugins/inputmask/jquery.inputmask.min.js',
+    // $linkURL . 'pplugins/inputmask/jquery.inputmask.min.js',
+    $linkURL . 'plugins/daterangepicker/daterangepicker.js',
+    $linkURL . 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
     $linkURL . 'js/datatable.js',
     $linkURL . 'js/visorfoto.js',
+    $linkURL . 'js/fecha.js',
 ];
 
 // $linksScript = [
 //     $linkURL . 'plugins/chart.js/Chart.min.js',
-//     $linkURL . 'plugins/moment/moment.min.js',
 //     $linkURL . 'pplugins/inputmask/jquery.inputmask.min.js',
 //     $linkURL . 'pplugins/inputmask/jquery.inputmask.min.js',
-//     $linkURL . 'plugins/daterangepicker/daterangepicker.js',
-//     $linkURL . 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
-
-
-//     
-//     $linkURL . '../js/fecha.js'
 
 // ];
