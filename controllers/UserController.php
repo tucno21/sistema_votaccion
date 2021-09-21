@@ -35,7 +35,7 @@ class UserController
             if (!$_POST['user']['password']) {
                 array_push($errores, "La contraseña es obligatorio");
             }
-            if (!$_POST['user']['categoryId']) {
+            if (!$_POST['user']['rango']) {
                 array_push($errores, "La categoria es obligatorio");
             }
             if (!$_FILES['user']['tmp_name']['photo']) {
@@ -44,7 +44,8 @@ class UserController
             if (
                 preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name']) &&
                 preg_match('/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/', $_POST['user']['email']) &&
-                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password'])
+                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password']) &&
+                preg_match('/^[a-zA-z]+$/', $_POST['user']['rango'])
             ) {
 
                 //Buscar ususario y traer
@@ -91,7 +92,6 @@ class UserController
 
         $router->render('backend/usuarios/crear', [
             'errores' => $errores,
-            'categories' => $categories,
         ]);
     }
 
