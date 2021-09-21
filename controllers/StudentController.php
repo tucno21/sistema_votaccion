@@ -3,8 +3,6 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Aulas;
-use Model\Turnos;
 use Model\Students;
 
 
