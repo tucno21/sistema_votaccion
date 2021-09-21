@@ -127,6 +127,100 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
         <!-- /.content -->
         </section>
     </div>
+    <script src="../backendAL/plugins/jquery/jquery.min.js"></script>
+    <script src="../backendAL/plugins/chart.js/Chart.min.js"></script>
+    <script>
+        //===============================================
+        var ticksStyle = {
+            fontColor: '#17202A',
+            fontStyle: 'bold'
+        }
+
+        var mode = 'index'
+        var intersect = true
+
+
+        var $salesChart = $('#sales-chart-resultados')
+        // eslint-disable-next-line no-unused-vars
+        var salesChart = new Chart($salesChart, {
+            type: 'bar',
+            data: {
+                labels: [
+                    <?php
+                    if ($resultados != null) {
+                        foreach ($resultados as $nombre => $cant) {
+                            echo "'" . $nombre . "',";
+                        }
+                    } else {
+                        echo "'0',";
+                    }
+                    ?>
+                ],
+                datasets: [{
+                    // backgroundColor: '#007bff',
+                    backgroundColor: '<?php echo $color->color_s; ?>',
+                    borderColor: '<?php echo $color->color_b; ?>',
+                    data: [
+                        <?php
+                        if ($resultados != null) {
+                            foreach ($resultados as $nombre => $cant) {
+                                echo "'" . $cant . "',";
+                            }
+                        } else {
+                            echo "'0',";
+                        }
+                        ?>
+                    ]
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        // display: false,
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+
+                            // Include a dollar sign in the ticks
+                            callback: function(value) {
+                                if (value >= 1000) {
+                                    value /= 1000
+                                    value += 'k'
+                                }
+
+                                return '' + value
+                            }
+                        }, ticksStyle)
+                    }],
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        })
+        //===============================================
+    </script>
 
 <?php
     include '../views/backend/component/AdminFooter.php';
