@@ -83,10 +83,11 @@ $linksCss = [
     $linkURL . 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css',
     $linkURL . 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css',
     $linkURL . 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css',
+    $linkURL . 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
 ];
 
 // $linksCss = [
-//     $linkURL . 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
+//     
 
 //     $linkURL . 'plugins/icheck-bootstrap/icheck-bootstrap.min.css',
 //     $linkURL . 'plugins/daterangepicker/daterangepicker.css',
@@ -106,6 +107,7 @@ $linksScript = [
     $linkURL . 'plugins/datatables-buttons/js/buttons.html5.min.js',
     $linkURL . 'plugins/datatables-buttons/js/buttons.print.min.js',
     $linkURL . 'plugins/datatables-buttons/js/buttons.colVis.min.js',
+    $linkURL . 'plugins/sweetalert2/sweetalert2.min.js',
     $linkURL . 'js/datatable.js',
     $linkURL . 'js/visorfoto.js',
 ];
