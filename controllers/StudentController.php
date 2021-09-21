@@ -4,7 +4,9 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Students;
-
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class StudentController
 {
@@ -151,5 +153,53 @@ class StudentController
                 }
             }
         }
+    }
+
+    public static function reporte()
+    {
+        $resultados = Students::All();
+        // debuguear($resultados);
+
+        $excel = new Spreadsheet();
+        $hojaActiva = $excel->getActiveSheet();
+        $hojaActiva->setTitle('Participación');
+        $hojaActiva->getTabColor()->setRGB('FF0000');
+
+        $hojaActiva->getColumnDimension('A')->setWidth(5);
+        $hojaActiva->setCellValue('A1', 'N');
+        $hojaActiva->getColumnDimension('B')->setWidth(30);
+        $hojaActiva->setCellValue('B1', 'NOMBRE Y APELLIDOS');
+        $hojaActiva->getColumnDimension('C')->setWidth(10);
+        $hojaActiva->setCellValue('C1', 'DNI');
+        $hojaActiva->getColumnDimension('D')->setWidth(7);
+        $hojaActiva->setCellValue('D1', 'AULA');
+        $hojaActiva->getColumnDimension('E')->setWidth(8);
+        $hojaActiva->setCellValue('E1', 'PARTICPACIÓN');
+        $hojaActiva->getColumnDimension('F')->setWidth(20);
+        $hojaActiva->setCellValue('F1', 'FECHA Y HORA');
+
+
+        $fila = 2;
+        foreach ($resultados as $value) {
+            $hojaActiva->setCellValue('A' . $fila, $fila - 1);
+            $hojaActiva->setCellValue('B' . $fila, $value->name);
+            $hojaActiva->setCellValue('C' . $fila, $value->dni);
+            $hojaActiva->setCellValue('D' . $fila, $value->aula);
+            if ($value->canditatoId == null || $value->canditatoId == '' || $value->canditatoId == 0) {
+                $hojaActiva->setCellValue('E' . $fila, 'no');
+            } else {
+                $hojaActiva->setCellValue('E' . $fila, 'si');
+            }
+            $hojaActiva->setCellValue('F' . $fila, $value->date_access);
+            $fila++;
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="estudiantes.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = IOFactory::createWriter($excel, 'Xlsx');
+        $writer->save('php://output');
+        exit;
     }
 }
