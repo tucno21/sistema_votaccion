@@ -114,13 +114,14 @@ class UserController
             if (!$_POST['user']['password']) {
                 array_push($errores, "La contraseña es obligatorio");
             }
-            if (!$_POST['user']['categoryId']) {
-                array_push($errores, "La categoria es obligatorio");
+            if (!$_POST['user']['rango']) {
+                array_push($errores, "El rango es obligatorio");
             }
             if (
                 preg_match('/^[a-zA-z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['user']['name']) &&
                 preg_match('/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/', $_POST['user']['email']) &&
-                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password'])
+                preg_match('/^[a-zA-z0-9]+$/', $_POST['user']['password']) &&
+                preg_match('/^[a-zA-z]+$/', $_POST['user']['rango'])
             ) {
                 $args = $_POST['user'];
 
@@ -161,7 +162,6 @@ class UserController
         $router->render('backend/usuarios/actualizar', [
             'user' => $user,
             'errores' => $errores,
-            'categories' => $categories,
         ]);
     }
 
