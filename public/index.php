@@ -21,6 +21,7 @@ $router->get('/logout', [LoginController::class, "logout"]);
 
 //DASHBOARD
 $router->get('/dashboard', [DashboardController::class, "index"]);
+$router->get('/dashboard/excel', [DashboardController::class, "excel"]);
 
 //VOTO
 $router->get('/tuvoto', [VotoController::class, "index"]);
