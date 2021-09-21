@@ -6,10 +6,10 @@ if ($_SESSION != null) {
 
 
 // DATOS GENERALES ADMIN
-$title = 'AdminLTE <b>3</b>';
-$titleBar = 'AdminLTE 3';
-$titlelogin = '<b>Admin</b>LTE';
-$logo = '../backendAL/img/logo.png';
+$title = 'Tu <b>Voto</b>';
+$titleBar = 'Tu Voto';
+$titlelogin = 'Tu <b>Voto</b>';
+$logo = '../backendAL/img/voto.jpg';
 $mainLink = '/dashboard';
 
 
