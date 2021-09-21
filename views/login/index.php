@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title> Tu_Voto </title>
-    <link rel="stylesheet" href="../login/style.css">
+    <link rel="stylesheet" href="../frontendV/style.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,15 +48,23 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <!-- <img src="../imagenes/<?php echo $diseño->photo; ?>" alt=""> -->
+
+                <?php if (isset($diseño->Photo)) : ?>
+                    <img src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
+                <?php else : ?>
+                    <img src="../frontendV/images/frontImg.jpg" alt="">
+                <?php endif; ?>
                 <div class="text">
-                    <!-- <span class="text-1">Elecciones Municipales <br> Escolares <?php echo $diseño->fecha; ?></span> -->
+                    <span class="text-1">Elecciones Municipales <br> Escolares <?php echo isset($diseño->fecha) ? $diseño->fecha : ''; ?></span>
                     <span class="text-2">Tu voto cuenta</span>
-                    <span class="text-2"></span>
                 </div>
             </div>
             <div class="back">
-                <!-- <img class="backImg" src="../imagenes/<?php echo $diseño->photo; ?>" alt=""> -->
+                <?php if (isset($diseño->Photo)) : ?>
+                    <img class="backImg" src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
+                <?php else : ?>
+                    <img class="backImg" src="../frontendV/images/backImg.jpg" alt="">
+                <?php endif; ?>
                 <div class="text">
                     <span class="text-1">Solo personal Autorizado</span>
                     <span class="text-2">Panel administrativo</span>
