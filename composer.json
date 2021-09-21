@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "intervention/image": "^2.6"
+        "intervention/image": "^2.6",
+        "phpoffice/phpspreadsheet": "^1.18"
     },
     "autoload": {
         "psr-4": {
