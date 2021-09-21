@@ -107,6 +107,7 @@ $linksScript = [
     $linkURL . 'plugins/datatables-buttons/js/buttons.print.min.js',
     $linkURL . 'plugins/datatables-buttons/js/buttons.colVis.min.js',
     $linkURL . 'js/datatable.js',
+    $linkURL . 'js/visorfoto.js',
 ];
 
 // $linksScript = [
@@ -118,7 +119,7 @@ $linksScript = [
 //     $linkURL . 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
 
 
-//     $linkURL . '../js/visorfoto.js'
+//     
 //     $linkURL . '../js/fecha.js'
 
 // ];

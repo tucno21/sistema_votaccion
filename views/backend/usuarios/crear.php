@@ -96,7 +96,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                         </div>
                         <div class="form-group">
                             <div class="card" style="width: 8rem;">
-                                <img class="img-thumbnail card-img-top previsualizar" src="../adminLte/dist/img/user2-160x160.jpg" alt="Card image cap">
+                                <img class="img-thumbnail card-img-top previsualizar" src="../backendAL/img/user.png" alt="Card image cap">
                                 <div class="card-body">
                                     <p class="card-text">Peso máximo de 1mb</p>
                                 </div>
