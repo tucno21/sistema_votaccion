@@ -5,6 +5,8 @@ namespace Controllers;
 use MVC\Router;
 use Model\Login;
 use Model\Diseno;
+use Model\Students;
+use Model\FechaVotacion;
 
 class LoginController
 {
@@ -18,6 +20,60 @@ class LoginController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            if (isset($_POST["dni"])) {
+                if ($_POST["dni"] !== '') {
+
+                    if (preg_match('/^[0-9]{8}+$/', $_POST["dni"])) {
+
+                        $colum =  "dni";
+                        $valorColum = $_POST["dni"];
+                        $respuesta = Students::FindColumn($colum, $valorColum);
+                        // debuguear($respuesta);
+
+                        $fecha =  1;
+                        $respuesta2 = FechaVotacion::find($fecha);
+
+                        date_default_timezone_set('America/Lima');
+                        $fechaHoy = date("Y-m-d");
+                        $horahoy = date("H:i:s");
+
+                        if (isset($respuesta)) {
+
+                            if ($respuesta2->fecha == $fechaHoy) {
+
+                                if ($horahoy >= $respuesta2->hora_inicio && $horahoy <= $respuesta2->hora_fin) {
+
+                                    if ($respuesta->canditatoId == null || $respuesta->canditatoId == '' || $respuesta->canditatoId == 0) {
+
+                                        $fh = date("Y-m-d H:i:s");
+                                        $args['last_access'] = $fh;
+                                        Students::update($args, $respuesta->id);
+
+                                        session_start();
+                                        $_SESSION["tuvoto"] = "ok";
+                                        $_SESSION['id'] = $respuesta->id;
+                                        $_SESSION['name'] = $respuesta->name;
+
+                                        header('Location: /tuvoto');
+                                    } else {
+                                        $errores = ['Usted ya voto no puede entrar'];
+                                    }
+                                } else {
+                                    $errores = ['La votacion de: ' . $respuesta2->hora_inicio . ' a ' . $respuesta2->hora_fin];
+                                }
+                            } else {
+                                $errores = ['La fecha de votacion es: ' . $respuesta2->fecha];
+                            }
+                        } else {
+                            $errores = ['El DNI no esta registrado en el sistema'];
+                        }
+                    } else {
+                        $errores = ['El DNI tiene 8 digitos'];
+                    }
+                } else {
+                    $errores = ['Ingrese su DNi'];
+                }
+            }
 
 
             if (isset($_POST["email"]) && isset($_POST["password"])) {

@@ -49,7 +49,7 @@
         <div class="cover">
             <div class="front">
 
-                <?php if (isset($diseño->Photo)) : ?>
+                <?php if (isset($diseño->photo)) : ?>
                     <img src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
                 <?php else : ?>
                     <img src="../frontendV/images/frontImg.jpg" alt="">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="back">
-                <?php if (isset($diseño->Photo)) : ?>
+                <?php if (isset($diseño->photo)) : ?>
                     <img class="backImg" src="../imagenes/<?php echo $diseño->photo; ?>" alt="">
                 <?php else : ?>
                     <img class="backImg" src="../frontendV/images/backImg.jpg" alt="">

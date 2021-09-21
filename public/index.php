@@ -4,6 +4,7 @@ require_once __DIR__ . '/../include/app.php';
 
 use MVC\Router;
 use Controllers\UserController;
+use Controllers\VotoController;
 use Controllers\LoginController;
 use Controllers\DisenoController;
 use Controllers\StudentController;
@@ -20,6 +21,10 @@ $router->get('/logout', [LoginController::class, "logout"]);
 
 //DASHBOARD
 $router->get('/dashboard', [DashboardController::class, "index"]);
+
+//VOTO
+$router->get('/tuvoto', [VotoController::class, "index"]);
+$router->post('/tuvoto', [VotoController::class, "index"]);
 
 // //CRUD USUARIOS
 $router->get('/usuarios', [UserController::class, "index"]);
