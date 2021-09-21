@@ -40,10 +40,9 @@ $linksSidebar = [
     ['header' => 'USUARIOS'],
     [
         'mode' => 'menu',
-        'text' => 'user',
+        'text' => 'Usuarios',
         'url'  => '/usuarios',
-        // 'class' => 'nav-header',
-        'icon' => 'fab fa-fw fa-buffer',
+        'icon' => 'fas fa-user',
     ],
     ['header' => 'ESTUDIANTES'],
     [
@@ -52,32 +51,26 @@ $linksSidebar = [
         'url'  => '/estudiantes',
         'icon' => 'fa fa-users',
     ],
+    ['header' => 'ELECCIONES'],
+    [
+        'mode' => 'menu',
+        'text' => 'Candidatos',
+        'url'  => '/candidatos',
+        'icon' => 'far fa-address-card',
+    ],
+    [
+        'mode' => 'menu',
+        'text' => 'Fecha Electoral',
+        'url'  => '/fechaVotacion',
+        'icon' => 'far fa-calendar-alt',
+    ],
     ['header' => 'DISEÑO'],
     [
-        'mode' => 'submenu',
-        'text'    => 'Ventas',
-        'url'    => '#',
-        'icon' => 'fas fa-cart-arrow-down',
-        'submenu' => [
-            [
-                'text' => 'Administrar ventas',
-                'url'  => '/ventas',
-                'icon' => 'fas fa-tasks',
-            ],
-            [
-                'text' => 'Crear ventas',
-                'url'  => '/crear-ventas',
-                'icon' => 'far fa-plus-square',
-            ],
-            [
-                'text' => 'Reportes de ventas',
-                'url'  => '/reportes',
-                'icon' => 'fas fa-file-invoice-dollar',
-            ],
-        ],
-
+        'mode' => 'menu',
+        'text' => 'Diseño',
+        'url'  => '/diseño',
+        'icon' => 'fas fa-palette',
     ],
-    ['header' => 'CLIENTES'],
 ];
 
 
