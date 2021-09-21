@@ -28,7 +28,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-bordered table-striped dtr-inline dt-responsive">
+                    <table class="table table-bordered table-striped dtr-inline dt-responsive tablaDataTable">
                         <thead>
                             <tr>
                                 <th style="width: 10px;">N°</th>

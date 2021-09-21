@@ -80,13 +80,14 @@ $linksCss = [
     'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback',
     $linkURL . 'plugins/fontawesome-free/css/all.min.css',
     $linkURL . 'adminLte/css/adminlte.min.css',
+    $linkURL . 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css',
+    $linkURL . 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css',
+    $linkURL . 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css',
 ];
 
 // $linksCss = [
 //     $linkURL . 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
-//     $linkURL . 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css',
-//     $linkURL . 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css',
-//     $linkURL . 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css',
+
 //     $linkURL . 'plugins/icheck-bootstrap/icheck-bootstrap.min.css',
 //     $linkURL . 'plugins/daterangepicker/daterangepicker.css',
 //     $linkURL . 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
@@ -96,6 +97,16 @@ $linksScript = [
     $linkURL . 'plugins/jquery/jquery.min.js',
     $linkURL . 'plugins/bootstrap/js/bootstrap.bundle.min.js',
     $linkURL . 'adminLte/js/adminlte.min.js',
+    $linkURL . 'plugins/datatables/jquery.dataTables.min.js',
+    $linkURL . 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
+    $linkURL . 'plugins/datatables-responsive/js/dataTables.responsive.min.js',
+    $linkURL . 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js',
+    $linkURL . 'plugins/datatables-buttons/js/dataTables.buttons.min.js',
+    $linkURL . 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js',
+    $linkURL . 'plugins/datatables-buttons/js/buttons.html5.min.js',
+    $linkURL . 'plugins/datatables-buttons/js/buttons.print.min.js',
+    $linkURL . 'plugins/datatables-buttons/js/buttons.colVis.min.js',
+    $linkURL . 'js/datatable.js',
 ];
 
 // $linksScript = [
@@ -106,17 +117,7 @@ $linksScript = [
 //     $linkURL . 'plugins/daterangepicker/daterangepicker.js',
 //     $linkURL . 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
 
-//     $linkURL . 'plugins/datatables/jquery.dataTables.min.js'
-//     $linkURL . 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'
-//     $linkURL . 'plugins/datatables-responsive/js/dataTables.responsive.min.js'
-//     $linkURL . 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js'
-//     $linkURL . 'plugins/datatables-buttons/js/dataTables.buttons.min.js'
-//     $linkURL . 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js'
-//     $linkURL . 'plugins/datatables-buttons/js/buttons.html5.min.js'
-//     $linkURL . 'plugins/datatables-buttons/js/buttons.print.min.js'
-//     $linkURL . 'plugins/datatables-buttons/js/buttons.colVis.min.js'
 
-//     $linkURL . '../js/datatable.js'
 //     $linkURL . '../js/visorfoto.js'
 //     $linkURL . '../js/fecha.js'
 
