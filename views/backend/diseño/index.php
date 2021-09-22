@@ -48,7 +48,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                                     <tr>
                                         <td><?php echo $di->name_ie; ?></td>
                                         <?php if ($di->photo == "") : ?>
-                                            <td><img src="../adminLte/dist/img/user2-160x160.jpg" alt="avatar" class="img-thumbnail" width="40px"></td>
+                                            <td><img src="../backendAL/img/logo.png" alt="avatar" class="img-thumbnail" width="40px"></td>
                                         <?php else : ?>
                                             <td><img src="../imagenes/<?php echo $di->photo; ?>" alt="avatar" class="img-thumbnail" width="40px"></td>
                                         <?php endif; ?>
