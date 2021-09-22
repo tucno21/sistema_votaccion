@@ -174,6 +174,7 @@ class Template
         }
     }
 
+    //RECIVE UN QUERY Y ENVIA UN OBJETO
     public static function mysqlOne($colum)
     {
         $query = $colum;
@@ -185,6 +186,7 @@ class Template
         $stmt->null;
     }
 
+    //RECIVE UN QUERY Y ENVIA GRUPOS DE OBJETOS
     public static function mysqlAll($colum)
     {
         $query = $colum;
@@ -199,5 +201,21 @@ class Template
         } else {
             return "error";
         }
+    }
+
+    //GUARDAR EN LA TABLA
+    public static function SaveQuery($queryDatos)
+    {
+        $query = $queryDatos;
+        $stmt = self::$db->query($query);
+
+        if ($stmt) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt->null;
     }
 }

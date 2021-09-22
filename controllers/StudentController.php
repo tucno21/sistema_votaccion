@@ -7,6 +7,7 @@ use Model\Students;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class StudentController
 {
@@ -233,5 +234,63 @@ class StudentController
         $writer = IOFactory::createWriter($excel, 'Xlsx');
         $writer->save('php://output');
         exit;
+    }
+
+    public static function datos(Router $router)
+    {
+        $errores = [];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if (isset($_FILES)) {
+
+                $allowedFileType = ['application/vnd.ms-excel', 'text/xls', 'text/xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+
+                if (in_array($_FILES["file"]["type"], $allowedFileType)) {
+
+                    $targetPath = CARPETA_IMAGENES . $_FILES['file']['name'];
+                    move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+
+                    $documentoExcel = IOFactory::load($targetPath);
+                    $totalHojas = $documentoExcel->getSheetCount();
+                    $hojaactual = $documentoExcel->getSheet(0);
+                    $numeroFilas = $hojaactual->getHighestDataRow();
+                    $letraColum = $hojaactual->getHighestColumn();
+                    $numeroletra = Coordinate::columnIndexFromString($letraColum);
+                    // debuguear($numeroletra);
+
+                    $resultado = '';
+                    for ($iFila = 2; $iFila <= $numeroFilas; $iFila++) {
+
+                        // for ($iColum = 1; $iColum <= $numeroletra; $iColum++) {
+
+                        $valorA = $hojaactual->getCellByColumnAndRow(1, $iFila);
+                        $valorB = $hojaactual->getCellByColumnAndRow(2, $iFila);
+                        $valorC = $hojaactual->getCellByColumnAndRow(3, $iFila);
+
+                        $query = "INSERT INTO students (name, dni, aula) VALUES ('$valorA', '$valorB', '$valorC')";
+
+                        $resultado = Students::SaveQuery($query);
+                        // debuguear($query);
+                        // }
+                    }
+
+                    if ($resultado == "ok") {
+                        $existeAchivo = file_exists($targetPath);
+                        if ($existeAchivo) {
+                            unlink($targetPath);
+                        }
+                        header('Location: /estudiantes');
+                    }
+                } else {
+                    array_push($errores, "Un archivo no valido");
+                }
+            } else {
+                array_push($errores, "Eliga un archivo");
+            }
+        }
+        $router->render('backend/estudiantes/subirexcel', [
+            'errores' => $errores,
+        ]);
     }
 }

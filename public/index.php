@@ -44,6 +44,8 @@ $router->post('/estudiantes/actualizar', [StudentController::class, "actualizar"
 $router->get('/estudiantes/eliminar', [StudentController::class, "eliminar"]);
 $router->get('/estudiantes/reporte', [StudentController::class, "reporte"]);
 $router->get('/estudiantes/modelo', [StudentController::class, "modelo"]);
+$router->get('/estudiantes/subirdatos', [StudentController::class, "datos"]);
+$router->post('/estudiantes/subirdatos', [StudentController::class, "datos"]);
 
 // //CRUD CANDIDATOS
 $router->get('/candidatos', [CandidatoController::class, "index"]);

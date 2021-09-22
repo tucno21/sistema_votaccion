@@ -29,8 +29,8 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                 <div class="card-header">
                     <a class="btn btn-primary mt-1" href="/estudiantes/crear">Agregar Estudiante</a>
                     <a href="/estudiantes/reporte" class="btn btn-success mt-1"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Participación</a>
-                    <a href="/estudiantes/subirdatos" class="btn btn-success mt-1"><i class="fas fa-arrow-circle-up"></i> <i class="far fa-file-excel"></i> Subir Estudiantes</a>
                     <a href="/estudiantes/modelo" class="btn btn-success mt-1"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Modelo</a>
+                    <a href="/estudiantes/subirdatos" class="btn btn-success mt-1"><i class="fas fa-arrow-circle-up"></i> <i class="far fa-file-excel"></i> Subir Estudiantes</a>
                 </div>
 
                 <div class="card-body">
