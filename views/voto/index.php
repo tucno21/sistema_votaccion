@@ -91,7 +91,7 @@ if (!isset($_SESSION)) {
                     <?php foreach ($candidatos as $cand) : ?>
                         <div class="row">
                             <div class="border col-6 border-secondary d-flex justify-content-center">
-                                <input type="radio" class="btn-check" name="eligio[canditatoId]" id="<?php echo $cand->id; ?>" autocomplete="off" value="<?php echo $cand->id; ?>">
+                                <input type="radio" class="btn-check" name="eligio[candidatoId]" id="<?php echo $cand->id; ?>" autocomplete="off" value="<?php echo $cand->id; ?>">
                                 <label class="btn btn-outline-dark text-uppercase tamaño" for="<?php echo $cand->id; ?>"><?php echo $cand->group_name; ?></label>
                             </div>
                             <div class="border col-3 border-secondary d-flex justify-content-center">

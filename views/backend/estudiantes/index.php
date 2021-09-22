@@ -67,7 +67,7 @@ if (isset($_SESSION["iniciarSesion"]) && $iniciarSesion == "ok") {
                                     <td><?php echo $estudiante->dni; ?></td>
                                     <td><?php echo $estudiante->aula; ?></td>
 
-                                    <?php if ($estudiante->canditatoId > 0) { ?>
+                                    <?php if ($estudiante->candidatoId > 0) { ?>
                                         <td>
                                             <p class="pt-0 pb-0 btn btn-primary">si</p>
                                         </td>

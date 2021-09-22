@@ -43,7 +43,7 @@ class LoginController
 
                                 if ($horahoy >= $respuesta2->hora_inicio && $horahoy <= $respuesta2->hora_fin) {
 
-                                    if ($respuesta->canditatoId == null || $respuesta->canditatoId == '' || $respuesta->canditatoId == 0) {
+                                    if ($respuesta->candidatoId == null || $respuesta->candidatoId == '' || $respuesta->candidatoId == 0) {
 
                                         $fh = date("Y-m-d H:i:s");
                                         $args['last_access'] = $fh;

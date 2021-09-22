@@ -8,10 +8,10 @@ class Candidatos extends Template
 
     public static function AllVotos()
     {
-        $query = "SELECT E.canditatoId, 
+        $query = "SELECT E.candidatoId, 
                         C.name  
                     FROM students E 
-                    INNER JOIN candidatos C ON E.canditatoId = C.id";
+                    INNER JOIN candidatos C ON E.candidatoId = C.id";
 
         $stmt = self::$db->query($query);
         $resultadato = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
@@ -24,10 +24,10 @@ class Candidatos extends Template
 
     public static function Ganador()
     {
-        $query = "SELECT E.canditatoId, C.name, COUNT(E.canditatoId) maximo 
+        $query = "SELECT E.candidatoId, C.name, COUNT(E.candidatoId) maximo 
                     FROM students E 
-                    INNER JOIN candidatos C ON E.canditatoId = C.id 
-                    GROUP BY canditatoId 
+                    INNER JOIN candidatos C ON E.candidatoId = C.id 
+                    GROUP BY candidatoId 
                     ORDER BY maximo DESC LIMIT 1";
 
         $stmt = self::$db->query($query);

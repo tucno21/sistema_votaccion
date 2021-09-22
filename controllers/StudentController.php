@@ -186,7 +186,7 @@ class StudentController
             $hojaActiva->setCellValue('B' . $fila, $value->name);
             $hojaActiva->setCellValue('C' . $fila, $value->dni);
             $hojaActiva->setCellValue('D' . $fila, $value->aula);
-            if ($value->canditatoId == null || $value->canditatoId == '' || $value->canditatoId == 0) {
+            if ($value->candidatoId == null || $value->candidatoId == '' || $value->candidatoId == 0) {
                 $hojaActiva->setCellValue('E' . $fila, 'no');
             } else {
                 $hojaActiva->setCellValue('E' . $fila, 'si');

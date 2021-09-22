@@ -51,10 +51,10 @@ class DashboardController
         // GROUP BY voto 
         // ORDER BY maximo DESC";
 
-        $query = "SELECT C.name, C.group_name, COUNT(E.canditatoId) maximo 
+        $query = "SELECT C.name, C.group_name, COUNT(E.candidatoId) maximo 
         FROM candidatos C 
-        INNER JOIN students E ON C.id = E.canditatoId 
-        GROUP BY canditatoId 
+        INNER JOIN students E ON C.id = E.candidatoId 
+        GROUP BY candidatoId 
         ORDER BY maximo DESC";
 
         $resultados = Candidatos::mysqlAll($query);

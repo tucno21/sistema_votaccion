@@ -20,10 +20,10 @@ class VotoController
 
             if (isset($_POST['eligio'])) {
                 // debuguear(isset($_POST['eligio']));
-                if (isset($_POST['eligio']["canditatoId"]) && $_POST["eligio"]["canditatoId"] != "") {
+                if (isset($_POST['eligio']["candidatoId"]) && $_POST["eligio"]["candidatoId"] != "") {
 
                     $id = $_POST["eligio"]["id"];
-                    $arr['canditatoId'] = $_POST["eligio"]["canditatoId"];
+                    $arr['candidatoId'] = $_POST["eligio"]["candidatoId"];
 
                     $respuesta = Students::update($arr, $id);
 
