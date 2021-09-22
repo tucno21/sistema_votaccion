@@ -2,9 +2,11 @@
 // resetSession();
 if (!isset($_SESSION)) {
     session_start();
+    $iniciarSesion = $_SESSION["iniciarSesion"];
+    $tipo = $_SESSION["tipo"];
 }
 
-if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
+if (isset($_SESSION["iniciarSesion"]) && $iniciarSesion == "ok") {
     // variables generales y creador de muna lateral
     include '../views/backend/adminlte.php';
     include '../views/backend/component/AdminHead.php';
@@ -27,10 +29,16 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary mt-1" href="/estudiantes/crear">Agregar Estudiante</a>
-                    <a href="/estudiantes/reporte" class="btn btn-success mt-1"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Participación</a>
-                    <a href="/estudiantes/modelo" class="btn btn-success mt-1"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Modelo</a>
-                    <a href="/estudiantes/subirdatos" class="btn btn-success mt-1"><i class="fas fa-arrow-circle-up"></i> <i class="far fa-file-excel"></i> Subir Estudiantes</a>
+                    <?php if ($tipo == 'Administrador') : ?>
+                        <a class="mt-1 btn btn-primary" href="/estudiantes/crear">Agregar Estudiante</a>
+                    <?php endif; ?>
+
+                    <a href="/estudiantes/reporte" class="mt-1 btn btn-success"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Participación</a>
+
+                    <?php if ($tipo == 'Administrador') : ?>
+                        <a href="/estudiantes/modelo" class="mt-1 btn btn-success"><i class="fas fa-arrow-down"></i> <i class="far fa-file-excel"></i> Descargar Modelo</a>
+                        <a href="/estudiantes/subirdatos" class="mt-1 btn btn-success"><i class="fas fa-arrow-circle-up"></i> <i class="far fa-file-excel"></i> Subir Estudiantes</a>
+                    <?php endif; ?>
                 </div>
 
                 <div class="card-body">
@@ -43,7 +51,9 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                                 <th>Aula</th>
                                 <th>Voto</th>
                                 <th>Fecha y hora Voto</th>
-                                <th>Aciones</th>
+                                <?php if ($tipo == 'Administrador') : ?>
+                                    <th>Aciones</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
 
@@ -59,24 +69,24 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 
                                     <?php if ($estudiante->canditatoId > 0) { ?>
                                         <td>
-                                            <p class="btn btn-primary pb-0 pt-0">si</p>
+                                            <p class="pt-0 pb-0 btn btn-primary">si</p>
                                         </td>
                                     <?php } else { ?>
                                         <td>
-                                            <p class="btn btn-danger pb-0 pt-0">no</p>
+                                            <p class="pt-0 pb-0 btn btn-danger">no</p>
                                         </td>
                                     <?php }; ?>
 
                                     <td><?php echo $estudiante->date_access; ?></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a class="btn btn-warning" href="/estudiantes/actualizar?id=<?php echo $estudiante->id; ?>"><i class="fa fa-edit"></i></a>
+                                    <?php if ($tipo == 'Administrador') : ?>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-warning" href="/estudiantes/actualizar?id=<?php echo $estudiante->id; ?>"><i class="fa fa-edit"></i></a>
 
-                                            <a class="btn btn-danger avisoAlertaxx" href="/estudiantes/eliminar?id=<?php echo $estudiante->id; ?>&tipo=estudiante"><i class="fas fa-trash-alt"></i></a>
-
-
-                                        </div>
-                                    </td>
+                                                <a class="btn btn-danger avisoAlertaxx" href="/estudiantes/eliminar?id=<?php echo $estudiante->id; ?>&tipo=estudiante"><i class="fas fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    <?php endif; ?>
                                 </tr>
                             <?php
                                 $fila++;

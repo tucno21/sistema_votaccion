@@ -2,9 +2,11 @@
 // resetSession();
 if (!isset($_SESSION)) {
     session_start();
+    $iniciarSesion = $_SESSION["iniciarSesion"];
+    $tipo = $_SESSION["tipo"];
 }
 
-if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
+if (isset($_SESSION["iniciarSesion"]) && $iniciarSesion == "ok") {
     // variables generales y creador de muna lateral
     include '../views/backend/adminlte.php';
     include '../views/backend/component/AdminHead.php';
@@ -88,7 +90,9 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
 
             <div class="card">
                 <div class="card-header">
-                    <a href="/dashboard/excel" class="btn btn-success">Descargar resultados en Excel</a>
+                    <?php if ($tipo == 'Administrador' || $tipo == 'Director') : ?>
+                        <a href="/dashboard/excel" class="btn btn-success">Descargar resultados en Excel</a>
+                    <?php endif; ?>
                 </div>
                 <div class="card-body">
                     <div class="row">

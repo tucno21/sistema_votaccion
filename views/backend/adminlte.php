@@ -4,7 +4,6 @@ if ($_SESSION != null) {
     $tipo = $_SESSION['tipo'];
 }
 
-
 // DATOS GENERALES ADMIN
 $title = 'Tu <b>Voto</b>';
 $titleBar = 'Tu Voto';
@@ -36,42 +35,82 @@ $menuSession = [
 
 
 //CREACION DE ENLACES PARA EL MENU SIDEBAR
-$linksSidebar = [
-    ['header' => 'USUARIOS'],
-    [
-        'mode' => 'menu',
-        'text' => 'Usuarios',
-        'url'  => '/usuarios',
-        'icon' => 'fas fa-user',
-    ],
-    ['header' => 'ESTUDIANTES'],
-    [
-        'mode' => 'menu',
-        'text' => 'Estudiantes',
-        'url'  => '/estudiantes',
-        'icon' => 'fa fa-users',
-    ],
-    ['header' => 'ELECCIONES'],
-    [
-        'mode' => 'menu',
-        'text' => 'Candidatos',
-        'url'  => '/candidatos',
-        'icon' => 'far fa-address-card',
-    ],
-    [
-        'mode' => 'menu',
-        'text' => 'Fecha Electoral',
-        'url'  => '/fechaVotacion',
-        'icon' => 'far fa-calendar-alt',
-    ],
-    ['header' => 'DISEÑO'],
-    [
-        'mode' => 'menu',
-        'text' => 'Diseño',
-        'url'  => '/diseño',
-        'icon' => 'fas fa-palette',
-    ],
-];
+
+if ($tipo == 'Administrador') {
+    $linksSidebar = [
+        ['header' => 'USUARIOS'],
+        [
+            'mode' => 'menu',
+            'text' => 'Usuarios',
+            'url'  => '/usuarios',
+            'icon' => 'fas fa-user',
+        ],
+        ['header' => 'ESTUDIANTES'],
+        [
+            'mode' => 'menu',
+            'text' => 'Estudiantes',
+            'url'  => '/estudiantes',
+            'icon' => 'fa fa-users',
+        ],
+        ['header' => 'ELECCIONES'],
+        [
+            'mode' => 'menu',
+            'text' => 'Candidatos',
+            'url'  => '/candidatos',
+            'icon' => 'far fa-address-card',
+        ],
+        [
+            'mode' => 'menu',
+            'text' => 'Fecha Electoral',
+            'url'  => '/fechaVotacion',
+            'icon' => 'far fa-calendar-alt',
+        ],
+        ['header' => 'DISEÑO'],
+        [
+            'mode' => 'menu',
+            'text' => 'Diseño',
+            'url'  => '/diseño',
+            'icon' => 'fas fa-palette',
+        ],
+    ];
+} else if ($tipo == 'Director') {
+    $linksSidebar = [
+        ['header' => 'ESTUDIANTES'],
+        [
+            'mode' => 'menu',
+            'text' => 'Estudiantes',
+            'url'  => '/estudiantes',
+            'icon' => 'fa fa-users',
+        ],
+        ['header' => 'ELECCIONES'],
+        [
+            'mode' => 'menu',
+            'text' => 'Candidatos',
+            'url'  => '/candidatos',
+            'icon' => 'far fa-address-card',
+        ],
+        [
+            'mode' => 'menu',
+            'text' => 'Fecha Electoral',
+            'url'  => '/fechaVotacion',
+            'icon' => 'far fa-calendar-alt',
+        ],
+    ];
+} else if ($tipo == 'Docente') {
+    $linksSidebar = [
+        ['header' => 'ESTUDIANTES'],
+        [
+            'mode' => 'menu',
+            'text' => 'Estudiantes',
+            'url'  => '/estudiantes',
+            'icon' => 'fa fa-users',
+        ],
+    ];
+}
+
+
+
+
 
 
 $linkURL = '../backendAL/';

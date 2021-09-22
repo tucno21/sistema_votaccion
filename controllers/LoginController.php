@@ -105,7 +105,7 @@ class LoginController
                                         $_SESSION["iniciarSesion"] = "ok";
                                         $_SESSION['id'] = $respuesta->id;
                                         $_SESSION['name'] = $respuesta->name;
-                                        $_SESSION['tipo'] = 'administrador';
+                                        $_SESSION['tipo'] = $respuesta->rango;
                                         $_SESSION['photo'] = $respuesta->photo;
                                         header('Location: /dashboard');
                                     } else {
