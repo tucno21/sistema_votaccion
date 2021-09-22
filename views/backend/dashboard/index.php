@@ -58,7 +58,7 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3><?php echo round(count($votos) / count($estudiantes) * 100, 2); ?>%</h3>
+                            <h3><?php echo $estudiantes != null ? round(count($votos) / count($estudiantes) * 100, 2) : ''; ?>%</h3>
 
                             <p>Porcentaje de participatión</p>
                         </div>
@@ -100,10 +100,12 @@ if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
                         <div class="col-lg-4 col-12">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h3><?php echo round($ganador->maximo / count($votos) * 100, 2); ?>%</h3>
-                                    <h5>Cant votos : <?php echo $ganador->maximo; ?></h5>
 
-                                    <p>Ganador: <?php echo $ganador->name; ?></p>
+                                    <h3><?php echo isset($ganador->maximo) ? round($ganador->maximo / count($votos) * 100, 2) : ''; ?>%</h3>
+
+                                    <h5>Cant votos : <?php echo isset($ganador->maximo) ? $ganador->maximo : ''; ?></h5>
+
+                                    <p>Ganador: <?php echo isset($ganador->name) ? $ganador->name : ''; ?></p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-trophy"></i>
