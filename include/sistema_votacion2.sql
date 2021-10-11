@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-09-2021 a las 13:57:01
+-- Tiempo de generación: 11-10-2021 a las 20:26:16
 -- Versión del servidor: 5.7.34-log
 -- Versión de PHP: 8.0.9
 
@@ -116,7 +116,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `photo`, `estado`, `rango`, `date_access`) VALUES
-(1, 'Admin', 'admin@admin.com', '$2y$10$k8AxH4I2BCIZgyjaz8OLJukJKpYPg.LX1dIGIo3P8ARQ1X5wrqhp2', NULL, 1, 'Administrador', '2021-09-22 13:55:18');
+(1, 'Admin', 'admin@admin.com', '$2y$10$k8AxH4I2BCIZgyjaz8OLJukJKpYPg.LX1dIGIo3P8ARQ1X5wrqhp2', NULL, 1, 'Administrador', '2021-10-11 20:20:36');
 
 --
 -- Índices para tablas volcadas
